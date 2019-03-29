@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable 0649  
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +19,10 @@ public class ShowInBattleCanvas : MonoBehaviour
     List<IBattleable> battlers = new List<IBattleable>();
     bool isTextCoroutineRunning;
 
+    public void Start()
+    {
+        Debug.Log($"{battleCanvas.name}");
+    }
 
 
 

@@ -15,6 +15,7 @@ public class ShowInStoryCanvas : MonoBehaviour
     [SerializeField] StoryMemo storyMemo;
     [SerializeField] ShowTextFiled showTextFiled;
     [SerializeField] ShowInBattleCanvas showInBattleCanvas;
+    [SerializeField] StoryContents storyContents;
 
     public bool isTextEnd;
 
@@ -38,9 +39,12 @@ public class ShowInStoryCanvas : MonoBehaviour
         isTextEnd = false;
         //image.sprite = battle;
         //ストーリーの内容を取得する
-        StoryContents storyContents = new StoryContents();
         var storyDelegate = storyContents.ReturnContents(story);
         var storyStr = storyDelegate(activePlayer);
+        if (story == StoryList.callbattle)
+        {
+            return;
+        }
         //ストーリーの内容をテキスト表示させる
         StartCoroutine(showTextFiled.ShowStorys(storyStr, Hide));
     }

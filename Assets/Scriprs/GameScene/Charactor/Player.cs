@@ -69,7 +69,8 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
 
     public void Roll()
     {
-        remainMass = Random.Range(1, 7);
+        //remainMass = Random.Range(1, 7);
+        remainMass = 4;
         Debug.Log($"出目は{remainMass}");
     }
 }
