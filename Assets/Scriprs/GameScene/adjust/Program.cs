@@ -156,7 +156,7 @@ public　partial class Program : MonoBehaviour
 
             beRolledDice.OnMoveExit();
             showRemainMass.Hide();
-            showInStoryCanvas.Show(story);
+            showInStoryCanvas.Show(story,activePlayer);
             isTextEndJudging = true;
         }
 
@@ -175,7 +175,7 @@ public　partial class Program : MonoBehaviour
 
 
 
-
+    //メモとして取ってあるだけのメソッド
     private void PlayerOneTurn()
     {
         //今誰のターンなのか判定する
@@ -221,7 +221,7 @@ public　partial class Program : MonoBehaviour
 
         //動き終わったら、showRemainMassを非アクティブに。
         //動き終わったら、StoryCanvasをactiveに
-        showInStoryCanvas.Show(story);
+        showInStoryCanvas.Show(story,activePlayer);
         //文章を読み終わったら、Storycanvasをfalseに
         showInStoryCanvas.Hide(true);
     }

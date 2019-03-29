@@ -19,18 +19,18 @@ public class ShowInStoryCanvas : MonoBehaviour
     public bool isTextEnd;
 
     //StoryCanvasを表示させる
-    public void Show(StoryList story)
+    public void Show(StoryList story, Player activePlayer)
     {
         //var massdelegate = メソッドからの戻り値();
         //massdelegate(player);
 
         //もしStoryではなくBattleなら
-        if (story == StoryList.battle)
-        {
-            //BattleCanvasを表示させる
-            showInBattleCanvas.OnBattleStart();
-            return;
-        }
+        //if (story == StoryList.battle)
+        //{
+        //    //BattleCanvasを表示させる
+        //    showInBattleCanvas.OnBattleStart();
+        //    return;
+        //}
 
         //StoryCanvasを表示させる
         canvas.SetActive(true);
@@ -39,7 +39,8 @@ public class ShowInStoryCanvas : MonoBehaviour
         //image.sprite = battle;
         //ストーリーの内容を取得する
         StoryContents storyContents = new StoryContents();
-        var storyStr = storyContents.ReturnContents(story);
+        var storyDelegate = storyContents.ReturnContents(story);
+        var storyStr = storyDelegate(activePlayer);
         //ストーリーの内容をテキスト表示させる
         StartCoroutine(showTextFiled.ShowStorys(storyStr, Hide));
     }

@@ -4,100 +4,93 @@ using UnityEngine;
 
 public enum StoryList
 {
-    nullStory = 0,
-    story1,
-    story2,
-    story3,
-    story4,
-    battle
+    nullStory,
+    healHP,
+    shopping,
+    helpPeople,
+    callbattle
 }
 
 
 public class StoryContents
 {
-    public string[] ReturnContents(StoryList story)
+    public MassContents ReturnContents(StoryList story)
     {
+        ReturnDelegate rd = new ReturnDelegate();
         switch (story)
         {
             case StoryList.nullStory:
-                string[] temp = { "ぬるぬる" };
-                //return new MassContents();
-                return temp;
-
-            case StoryList.story1:
-                string[] preEvent1 =
-                {
-                     "町の人と出会い、声をかけられました。",
-                     "「ありがとう、頑張ってね。応援してるよ。」",
-                     "頑張ろう！と気合が入りました。"
-                };
-                return preEvent1;
-
-            case StoryList.story2:
-                string[] preEvent2 =
-                {
-                    "教会の神父さんと出会いました。",
-                    "「疲れていないかい？少し休んでいきなよ。」",
-                    "少し休んだので、力がみなぎってきました。"
-                };
-                return preEvent2;
-
-            case StoryList.story3:
-                string[] preEvent3 =
-                {
-                    "パン屋さんと出会いました。",
-                    "「頑張ってね！これ持ってって！」",
-                    "パンをもらい、美味しく頂きました。"
-                };
-                return preEvent3;
-
-            case StoryList.story4:
-                string[] preEvent4 =
-                {
-                    "町の中にモンスターが出現しました。",
-                    "バトル開始！",
-                    "あなたはモンスターを退治しました。"
-                };
-                return preEvent4;
-
-            case StoryList.battle:
-                //メソッドを呼ぶ
-                string[] preBattle =
-                {
-                    "バトルしました"
-                };
-                return preBattle;
-
+                return new MassContents(rd.nullStory);
+            case StoryList.healHP:
+                return new MassContents(rd.HealHP);
+            case StoryList.shopping:
+                return new MassContents(rd.Shopping);
+            case StoryList.helpPeople:
+                return new MassContents(rd.HelpPeople);
+            case StoryList.callbattle:
+                return new MassContents(rd.CallBattle);
             default:
-                string[] tempo = { "ぬるぬる" };
-                return tempo;
+                return new MassContents(rd.nullStory);
         }
     }
 }
 
-delegate void MassContents(Player player);
+public delegate string[] MassContents(Player player);
 
 class ReturnDelegate
 {
-   public void HealHP(Player player)
+    public string[] HealHP(Player player)
     {
         player.hp += 500; //maxHpプロパティを作る。。。
+        string[] healHPStr =
+                {
+                    "教会の神父さんと出会いました。",
+                    "「疲れていないかい？少し休んでいきなよ。」",
+                    $"{player.charactorName}の体力が全回復した。"
+                };
+        return healHPStr;
     }
 
-    public void CallBattle(Player player)
+    public string[] CallBattle(Player player)
     {
         ShowInBattleCanvas showInBattleCanvas = new ShowInBattleCanvas();
         showInBattleCanvas.OnBattleStart();
+        string[] callBattleStr =
+        {
+            "敵が現れた！"
+        };
+        return callBattleStr;
     }
 
-    public void Shopping(Player player)
+    public string[] Shopping(Player player)
     {
-        //ショップメソッドを呼ぶ
-        Debug.Log("ショップメソッドを呼びました");
+        string[] shoppingStr =
+        {
+           "ショップメソッドを呼びました"
+        };
+        return shoppingStr;
     }
 
-    public void HelpPeople(Player player)
+    public string[] HelpPeople(Player player)
     {
-        player.money += Random.Range(100, 501);
+        int recivedMoney = Random.Range(100, 501);
+        player.money += recivedMoney;
+
+        string[] helpPeopleStr =
+        {
+            "「そこの若い子！ちょっと手伝ってくれないかい？」",
+            $"{player.charactorName}は町の人を手伝いました。",
+            $"お礼に{recivedMoney}円もらった"
+        };
+        return helpPeopleStr;
+    }
+
+    public string[] nullStory(Player player)
+    {
+        string[] nullStoryStr =
+        {
+            "ぬるぬる"
+        };
+        return nullStoryStr;
     }
 }
