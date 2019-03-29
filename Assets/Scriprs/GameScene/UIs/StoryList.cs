@@ -21,6 +21,7 @@ public class StoryContents
         {
             case StoryList.nullStory:
                 string[] temp = { "ぬるぬる" };
+                //return new MassContents();
                 return temp;
 
             case StoryList.story1:
@@ -71,5 +72,32 @@ public class StoryContents
                 string[] tempo = { "ぬるぬる" };
                 return tempo;
         }
+    }
+}
+
+delegate void MassContents(Player player);
+
+class ReturnDelegate
+{
+   public void HealHP(Player player)
+    {
+        player.hp += 500; //maxHpプロパティを作る。。。
+    }
+
+    public void CallBattle(Player player)
+    {
+        ShowInBattleCanvas showInBattleCanvas = new ShowInBattleCanvas();
+        showInBattleCanvas.OnBattleStart();
+    }
+
+    public void Shopping(Player player)
+    {
+        //ショップメソッドを呼ぶ
+        Debug.Log("ショップメソッドを呼びました");
+    }
+
+    public void HelpPeople(Player player)
+    {
+        player.money += Random.Range(100, 501);
     }
 }

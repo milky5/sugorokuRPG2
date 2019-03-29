@@ -21,6 +21,9 @@ public class ShowInStoryCanvas : MonoBehaviour
     //StoryCanvasを表示させる
     public void Show(StoryList story)
     {
+        //var massdelegate = メソッドからの戻り値();
+        //massdelegate(player);
+
         //もしStoryではなくBattleなら
         if (story == StoryList.battle)
         {
