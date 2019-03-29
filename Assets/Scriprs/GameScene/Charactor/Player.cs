@@ -29,6 +29,15 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
         //firstMass = true;
         //Roll();
         //Move();
+
+        level = 5;
+        hp = 21;
+        attackPoint = 11;
+        defencePoint = 11;
+        magicAttackPoint = 11;
+        magicDefencePoint = 11;
+        speed = 11;
+
     }
 
     private void Update()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Charactor, IBattleable
+public class Enemy : IBattleable
 {
     public int level { get; set; }
     public int hp { get; set; }
@@ -11,11 +11,7 @@ public class Enemy : Charactor, IBattleable
     public int magicAttackPoint { get; set; }
     public int magicDefencePoint { get; set; }
     public int speed { get; set; }
-
-    void Start()
-    {
-        charactorName = "敵";
-    }
+    public int syuzokuchi;
 
     public string Attack()
     {

@@ -24,7 +24,7 @@ class ReturnDelegate : MonoBehaviour
 
     public string[] CallBattle(Player player)
     {
-        showInBattleCanvas.OnBattleStart();
+        showInBattleCanvas.OnBattleStart(player);
         string[] callBattleStr =
         {
             "敵が現れた！"

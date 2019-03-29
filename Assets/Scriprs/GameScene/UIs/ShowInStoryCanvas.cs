@@ -14,7 +14,6 @@ public class ShowInStoryCanvas : MonoBehaviour
     [SerializeField] Sprite help;
     [SerializeField] StoryMemo storyMemo;
     [SerializeField] ShowTextFiled showTextFiled;
-    [SerializeField] ShowInBattleCanvas showInBattleCanvas;
     [SerializeField] StoryContents storyContents;
 
     public bool isTextEnd;

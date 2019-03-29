@@ -120,7 +120,8 @@ public　partial class Program : MonoBehaviour
             isDiceFinishedFalling = false;
 
             //サイコロを振る
-            int diceNumber = UnityEngine.Random.Range(1, 7);
+            int diceNumber = 4;
+            //int diceNumber = UnityEngine.Random.Range(1, 7);
             Debug.Log($"出た目は {diceNumber}");
             beRolledDice.OnRollingExit(diceNumber);
 
@@ -132,8 +133,6 @@ public　partial class Program : MonoBehaviour
         }
 
         //プレイヤーの動き終わりをフラグ管理
-        //現在      //動き終わったら、(BeRolledDiceクラス)の、フェイクダイスを非表示、
-        //現在      //サイコロポジションの最適化(空のオブジェクト・リアルダイスの高さ)
         if (isPlayerFinishedMoving)
         {
             isPlayerFinishedMoving = false;

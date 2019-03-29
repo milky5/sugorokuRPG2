@@ -14,23 +14,16 @@ public class ShowInBattleCanvas : MonoBehaviour
     [SerializeField] GameObject battleCanvas;
     [SerializeField] ShowInStoryCanvas showInStoryCanvas;
     [SerializeField] Text text;
-    Player player = new Player();
-    Enemy enemy = new Enemy();
+    Player acPlayer;
+    Enemy enemy;
     List<IBattleable> battlers = new List<IBattleable>();
     bool isTextCoroutineRunning;
 
-    public void Start()
-    {
-        Debug.Log($"{battleCanvas.name}");
-    }
-
-
-
-
-
     //Battle開始時に呼ばれるメソッド
-    public void OnBattleStart()
+    public void OnBattleStart(Player acPlayer)
     {
+        this.acPlayer = acPlayer;
+
         battleCanvas.SetActive(true);
 
         text.text = "敵が現れた。\nどうしますか？";
@@ -60,7 +53,6 @@ public class ShowInBattleCanvas : MonoBehaviour
     public IEnumerator Fighting()
     {
         {
-            Debug.Log("コルーチン開始");
             //早いほうに攻撃させ、遅いほうに防御させる
             //バトル結果の文字列と、終了のフラグを受け取る
             (var battleStr, var isEnd) = Direct(battlers[0], battlers[1]);
@@ -107,35 +99,27 @@ public class ShowInBattleCanvas : MonoBehaviour
 
 
 
-
-    //Debug用　ステータスをセットする
     //本番では、ステータスを取ってくる
     void SetStatus()
     {
-        player.money = 1000;
-        player.level = 20;
-        player.hp = 20;
-        player.attackPoint = 10;
-        player.defencePoint = 10;
-        player.magicAttackPoint = 10;
-        player.magicDefencePoint = 10;
-        player.speed = 10;
-        player.charactorName = "ぷれいやー";
+        enemy = new Enemy();
 
-        enemy.level = 15;
+        enemy.level = 5;
         enemy.hp = 20;
         enemy.attackPoint = 8;
         enemy.defencePoint = 8;
         enemy.magicAttackPoint = 8;
         enemy.magicDefencePoint = 8;
-        enemy.speed = 20;
-        enemy.charactorName = "てき";
+        enemy.speed = 10;
     }
+
 
     //取得したプレイヤーをリストに追加し、ソート
     void Sort()
     {
-        battlers.Add(player);
+        battlers.Clear();
+
+        battlers.Add(acPlayer);
         battlers.Add(enemy);
 
         battlers.Sort((a, b) => b.speed - a.speed);
