@@ -12,7 +12,7 @@ class ReturnDelegate : MonoBehaviour
 
     public string[] HealHP(Player player)
     {
-        player.hp += 500; //maxHpプロパティを作る。。。
+        player.HP = player.MaxHp;
         string[] healHPStr =
                 {
                     "教会の神父さんと出会いました。",
@@ -55,7 +55,7 @@ class ReturnDelegate : MonoBehaviour
         return helpPeopleStr;
     }
 
-    public string[] nullStory(Player player)
+    public string[] NullStory(Player player)
     {
         string[] nullStoryStr =
         {

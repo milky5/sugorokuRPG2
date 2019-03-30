@@ -4,13 +4,33 @@ using UnityEngine;
 
 public class Enemy : IBattleable
 {
-    public int level { get; set; }
-    public int hp { get; set; }
-    public int attackPoint { get; set; }
-    public int defencePoint { get; set; }
-    public int magicAttackPoint { get; set; }
-    public int magicDefencePoint { get; set; }
-    public int speed { get; set; }
+    int hp;
+
+    public int Level { get; set; }
+    public int MaxHp { get; set; }
+    public int HP
+    {
+        get
+        {
+            return hp;
+        }
+        set
+        {
+            if (value <= 0)
+            {
+                hp = 0;
+            }
+            else
+            {
+                hp = value;
+            }
+        }
+    }
+    public int AttackPoint { get; set; }
+    public int DefencePoint { get; set; }
+    public int MagicAttackPoint { get; set; }
+    public int MagicDefencePoint { get; set; }
+    public int Speed { get; set; }
     public int syuzokuchi;
 
     public string Attack()
@@ -22,9 +42,9 @@ public class Enemy : IBattleable
     {
         var returnList = new List<string>();
         returnList.Add($"敵に{damagePoint}のダメージ");
-        hp -= damagePoint;
-        returnList.Add($"敵のHPが{hp}になった。");
-        if (hp <= 0)
+        HP -= damagePoint;
+        returnList.Add($"敵のHPが{HP}になった。");
+        if (HP <= 0)
         {
             returnList.Add($"敵は倒れた");
             return (returnList, true);

@@ -13,7 +13,7 @@ public class StoryContents : MonoBehaviour
         switch (story)
         {
             case StoryList.nullStory:
-                return new MassContents(rd.nullStory);
+                return new MassContents(rd.NullStory);
             case StoryList.healHP:
                 return new MassContents(rd.HealHP);
             case StoryList.shopping:
@@ -23,7 +23,7 @@ public class StoryContents : MonoBehaviour
             case StoryList.callbattle:
                 return new MassContents(rd.CallBattle);
             default:
-                return new MassContents(rd.nullStory);
+                return new MassContents(rd.NullStory);
         }
     }
 }

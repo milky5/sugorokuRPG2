@@ -102,15 +102,16 @@ public class ShowInBattleCanvas : MonoBehaviour
     //本番では、ステータスを取ってくる
     void SetStatus()
     {
-        enemy = new Enemy();
-
-        enemy.level = 5;
-        enemy.hp = 20;
-        enemy.attackPoint = 8;
-        enemy.defencePoint = 8;
-        enemy.magicAttackPoint = 8;
-        enemy.magicDefencePoint = 8;
-        enemy.speed = 10;
+        enemy = new Enemy
+        {
+            Level = 5,
+            HP = 20,
+            AttackPoint = 8,
+            DefencePoint = 8,
+            MagicAttackPoint = 8,
+            MagicDefencePoint = 8,
+            Speed = 10
+        };
     }
 
 
@@ -122,7 +123,7 @@ public class ShowInBattleCanvas : MonoBehaviour
         battlers.Add(acPlayer);
         battlers.Add(enemy);
 
-        battlers.Sort((a, b) => b.speed - a.speed);
+        battlers.Sort((a, b) => b.Speed - a.Speed);
     }
 
 
@@ -141,7 +142,7 @@ public class ShowInBattleCanvas : MonoBehaviour
         {
             Player winner = attacker as Player;
             returnList.Add($"{winner.charactorName}の勝利！");
-            winner.level++;
+            winner.Level++;
             returnList.Add($"{winner.charactorName}はレベルが1上がった！");
             returnList.Add($"{winner.charactorName}は報奨金として{UnityEngine.Random.Range(100, 1000)}円もらった！");
         }
@@ -163,7 +164,7 @@ public class ShowInBattleCanvas : MonoBehaviour
         int iryoku = 50;
         float ransu = DamageRatioGenerator();
 
-        var damagePoint = ((attacker.level * 2 / 5 + 2) * (iryoku * attacker.attackPoint / defencer.defencePoint) / 50 + 2) * ransu;
+        var damagePoint = ((attacker.Level * 2 / 5 + 2) * (iryoku * attacker.AttackPoint / defencer.DefencePoint) / 50 + 2) * ransu;
 
         return (int)damagePoint;
     }

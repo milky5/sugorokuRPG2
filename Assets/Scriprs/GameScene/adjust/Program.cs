@@ -17,7 +17,7 @@ public　partial class Program : MonoBehaviour
     [SerializeField] WhosTurn whosTurn;
     [SerializeField] PlayerMover playerMover;
     [SerializeField] BeRolledDice beRolledDice;
-
+    [SerializeField] GameObject playerPrefabsParent;
     [SerializeField] GameObject playerPrefab;
 
 
@@ -47,8 +47,7 @@ public　partial class Program : MonoBehaviour
 
         for (int i = 0; i < names.Length; i++)
         {
-            var obj = Instantiate(playerPrefabs[i]);
-            //var playerComponent = obj.AddComponent<Player>();
+            var obj = Instantiate(playerPrefabs[i],playerPrefabsParent.transform);
             var playerComponent = obj.GetComponent<Player>();
             playerComponent.charactorName = names[i];
             players.Add(playerComponent);
