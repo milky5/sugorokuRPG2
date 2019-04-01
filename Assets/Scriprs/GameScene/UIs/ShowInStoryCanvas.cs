@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// マス目の内容を表示するキャンバスを管理するクラス
+/// </summary>
 public class ShowInStoryCanvas : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
@@ -18,20 +21,13 @@ public class ShowInStoryCanvas : MonoBehaviour
 
     public bool isTextEnd;
 
-    //StoryCanvasを表示させる
+    /// <summary>
+    /// StoryCanbasにマス目の内容を表示させるメソッド
+    /// </summary>
+    /// <param name="story">マス目の内容</param>
+    /// <param name="activePlayer">アクティブプレイヤ</param>
     public void Show(StoryList story, Player activePlayer)
     {
-        //var massdelegate = メソッドからの戻り値();
-        //massdelegate(player);
-
-        //もしStoryではなくBattleなら
-        //if (story == StoryList.battle)
-        //{
-        //    //BattleCanvasを表示させる
-        //    showInBattleCanvas.OnBattleStart();
-        //    return;
-        //}
-
         //StoryCanvasを表示させる
         canvas.SetActive(true);
         //テキスト表示をスタートさせるフラグを立てる
@@ -48,6 +44,10 @@ public class ShowInStoryCanvas : MonoBehaviour
         StartCoroutine(showTextFiled.ShowStorys(storyStr, Hide));
     }
 
+    /// <summary>
+    /// StoryCanvasを非アクティブにするメソッド
+    /// </summary>
+    /// <param name="end">文字表示コルーチンが終了したかどうか</param>
     public void Hide(bool end)
     {
         canvas.SetActive(false);

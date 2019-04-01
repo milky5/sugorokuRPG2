@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// アクティブプレイヤのステータスを取得し保持するクラス
+/// </summary>
 public class CharactorStatusKeeper : MonoBehaviour
 {
-    //各プレイヤーのステータスを取ってくる
-    //{ get; set;}を活用
-
     public GameObject playerObj;
     public Player player;
     public int remainMass = int.MinValue;
@@ -15,15 +15,9 @@ public class CharactorStatusKeeper : MonoBehaviour
     public StoryList story;
     public bool isPlayerMoving;
 
-    private void Awake()
-    {
-        //playerObj = GameObject.Find("Eevee");
-        ////player = GameObject.Find("Player");
-        //player = playerObj.GetComponent<Player>();
-        //remainMass = int.MinValue;
-        
-    }
-
+    /// <summary>
+    /// 1フレーム毎に呼ばれ、アクティブプレイヤのステータスを取得するメソッド
+    /// </summary>
     private void Update()
     {
         remainMass = player.remainMass;
@@ -32,6 +26,11 @@ public class CharactorStatusKeeper : MonoBehaviour
         isPlayerMoving = player.isMoving;
     }
 
+    /// <summary>
+    /// アクティブプレイヤが変更される際に、ステータスを更新するメソッド
+    /// </summary>
+    /// <param name="acPlayer">新アクティブプレイヤ</param>
+    /// <param name="acPlayerObj">新アクティブプレイヤのオブジェクト</param>
     public void RenewalData(Player acPlayer,GameObject acPlayerObj)
     {
         //データを初期化

@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// ゲームの流れを管理するクラス。
+/// 部分クラスになっており、
+/// このファイルでは、メンバメソッドを記載。
+/// </summary>
 public partial class Program : MonoBehaviour
 {
-    //次の順番のプレイヤーに、順番を回す
+    /// <summary>
+    /// 次の順番のプレイヤーに順番を回すメソッド
+    /// </summary>
     void TurnOrder()
     {
         int nextIndex = 0;
@@ -39,7 +46,9 @@ public partial class Program : MonoBehaviour
         players[nextIndex].GetComponent<Collider>().enabled = true;
     }
 
-    //アクティブプレイヤーを取得
+    /// <summary>
+    /// アクティブプレイヤーを取得するメソッド
+    /// </summary>
     void GetActivePlayer()
     {
         foreach (var p in players)
@@ -51,7 +60,9 @@ public partial class Program : MonoBehaviour
         }
     }
 
-    //アクティブプレイヤーのオブジェクトを取得
+    /// <summary>
+    /// アクティブプレイヤーのオブジェクトを取得するメソッド
+    /// </summary>
     void GetActivePlayerObj()
     {
         var playerObjs = GameObject.FindGameObjectsWithTag("Player");
@@ -74,7 +85,9 @@ public partial class Program : MonoBehaviour
         }
     }
 
-    //CharactorStatusKeeperで保持している内容を更新する
+    /// <summary>
+    /// CharactorStatusKeeperのActivePlayerを更新する
+    /// </summary>
     void RenewalData()
     {
         keeper.RenewalData(activePlayer,activePlayerObj);

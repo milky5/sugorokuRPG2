@@ -6,11 +6,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+/// <summary>
+/// Textに文字を表示するメソッドを定義するクラス
+/// </summary>
 public class ShowTextFiled : MonoBehaviour
 {
     [SerializeField] Text text;
     bool isCoroutineEnd;
 
+    /// <summary>
+    /// Textコンポーネントに1文字ずつ文字を表示するコルーチン
+    /// </summary>
+    /// <param name="strs">表示したい文字列</param>
+    /// <param name="callback">コールバック</param>
+    /// <returns></returns>
     public IEnumerator ShowStorys(string[] strs ,UnityAction<bool> callback)
     {
         //現在のindex
@@ -65,7 +74,13 @@ public class ShowTextFiled : MonoBehaviour
         callback(true);
     }
 
-    //Battle用のShowStorys
+    /// <summary>
+    /// 任意のTextコンポーネントに1文字ずつ文字を表示するコルーチン
+    /// </summary>
+    /// <param name="strs">表示したい文字列</param>
+    /// <param name="callback">コールバック</param>
+    /// <param name="selectedText">任意のTextコンポーネント</param>
+    /// <returns></returns>
     public IEnumerator ShowStorys(string[] strs, UnityAction<bool> callback,Text selectedText)
     {
         //既定のtextを避難させる
@@ -85,7 +100,10 @@ public class ShowTextFiled : MonoBehaviour
         callback(true);
     }
 
-    //ShowStory終了判定用のメソッド
+    /// <summary>
+    /// コルーチンの終了を判定するメソッド
+    /// </summary>
+    /// <param name="ended">コルーチンが終了したかどうか</param>
     void CoroutineEnd(bool ended)
     {
         isCoroutineEnd = ended;

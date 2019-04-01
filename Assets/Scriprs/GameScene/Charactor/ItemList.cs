@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーが所持できるアイテムをリスト化する列挙型
+/// </summary>
 public enum ItemList
 {
     item1 = 1,

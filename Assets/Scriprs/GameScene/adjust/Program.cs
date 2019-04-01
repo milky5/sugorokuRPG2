@@ -6,21 +6,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-// 宣言, Start(), Update()
+/// <summary>
+/// ゲームの流れを管理するクラス。
+/// 部分クラスになっており、このファイルでは、
+/// 変数の宣言、Awakeメソッド、Updateメソッドのみを記載。
+/// </summary>
 public　partial class Program : MonoBehaviour
 {
     [SerializeField] CharactorStatusKeeper keeper;
     [SerializeField] GameUIManager gameUIManager;
     [SerializeField] ShowInStoryCanvas showInStoryCanvas;
-    [SerializeField] Dice diceClass;
+    //[SerializeField] Dice diceClass;
     [SerializeField] ShowRemainMass showRemainMass;
     [SerializeField] WhosTurn whosTurn;
     [SerializeField] PlayerMover playerMover;
     [SerializeField] BeRolledDice beRolledDice;
     [SerializeField] GameObject playerPrefabsParent;
-    [SerializeField] GameObject playerPrefab;
-
-
+    //[SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject[] playerPrefabs;
     List<Player> players = new List<Player>();
 
@@ -28,9 +30,10 @@ public　partial class Program : MonoBehaviour
     GameObject activePlayerObj;
 
     StoryList story;
+    //EnemyList enemy;
 
+    bool isGameStart;
     bool isFirstTurn;
-
     bool isOneTurnStart;
     bool isPlayerChoicing;
     public bool isDiceBeganToFall;      //Diceクラスから代入される
@@ -39,6 +42,9 @@ public　partial class Program : MonoBehaviour
     bool isPlayerFinishedMoving;
     bool isTextEndJudging;
 
+    /// <summary>
+    /// プログラム開始直後に呼ばれるメソッド
+    /// </summary>
     private void Awake()
     {
         //
@@ -56,11 +62,20 @@ public　partial class Program : MonoBehaviour
         players[0].isActive = true;
         isFirstTurn = true;
         isOneTurnStart = true;
+
+        
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// 1フレームに1度呼ばれるメソッド
+    /// </summary>
     void Update()
     {
+        if (isGameStart)
+        {
+            isGameStart = false;
+            //あなた達は町へ出かけることになりました
+        }
         if (keeper.remainMass == 0 && isRemainJudging)
         {
             isRemainJudging = false;

@@ -5,17 +5,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// サイコロにアタッチされるクラス
+/// </summary>
 public class Dice : MonoBehaviour
 {
     [SerializeField] Program program;
     Rigidbody rb;
 
+    /// <summary>
+    /// スタート時に呼ばれ、オブジェクトのRigidBodyを取得するメソッド
+    /// </summary>
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// 1フレーム毎に呼ばれ、サイコロの動きを管理するメソッド
+    /// </summary>
     void Update()
     {
         transform.Rotate(new Vector3(45, -60, 60) * 7 * Time.deltaTime);
@@ -54,7 +62,12 @@ public class Dice : MonoBehaviour
         }
     }
 
-    public static bool IsUGUIHit(Vector3 _scrPos) // Input.mousePosition
+    /// <summary>
+    /// クリックされた場所にUIがあるかを確認するメソッド
+    /// </summary>
+    /// <param name="_scrPos">クリックされた場所(Input.mousePosition)</param>
+    /// <returns>その場所にUIが存在するかの真偽値</returns>
+    public static bool IsUGUIHit(Vector3 _scrPos) 
     {
         PointerEventData pointer = new PointerEventData(EventSystem.current);
         pointer.position = _scrPos;

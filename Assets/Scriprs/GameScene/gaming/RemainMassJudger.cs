@@ -4,10 +4,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// マスにアタッチされる、衝突判定をするメソッドを定義するクラス
+/// </summary>
 public class RemainMassJudger : MonoBehaviour
 {
     [SerializeField] StoryList thisStory;
+    [SerializeField] EnemyList thisEnemy;
 
+    /// <summary>
+    /// 何かと衝突した際に呼ばれ、プレイヤーの動きを管理するメソッド
+    /// </summary>
+    /// <param name="other">衝突した物体</param>
     private void OnTriggerEnter(Collider other)
     {
         //衝突相手がIRollableを持っていなければ何もしない
@@ -32,6 +40,7 @@ public class RemainMassJudger : MonoBehaviour
         {
             //このマスのストーリーを教える
             moving.story = thisStory;
+            moving.enemy = thisEnemy;
 
             //これ以上動かないようにする
             moving.isMoving = false;

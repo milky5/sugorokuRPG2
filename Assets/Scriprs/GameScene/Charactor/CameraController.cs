@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// カメラの位置を調整するためのクラス
+/// </summary>
 public class CameraController : MonoBehaviour
 {
     Vector3 distance;

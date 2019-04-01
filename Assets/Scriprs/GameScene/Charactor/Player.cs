@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーを定義するクラス
+/// </summary>
 public class Player : Charactor, IRollable, IMoveable, IBattleable
 {
     //public string playerName;
@@ -14,6 +17,7 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
     public bool isMoving { get; set; }
     public bool firstMass { get; set; }
     public StoryList story { get; set; }
+    public EnemyList enemy { get; set; }
 
     public Setter setter = new Setter();
     public PropatySetter hpSetter;
@@ -34,78 +38,38 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
     public int MaxHp { get; set; }
     public int HP
     {
-        get
-        {
-            return hp;
-        }
-        set
-        {
-            if (value <= 0)
-            {
-                hp = 0;
-            }
-            else
-            {
-                hp = value;
-            }
-        }
+        get => hp;
+        set => hp = value <= 0 ? 0 : value;
     }
     public int AttackPoint
     {
-        get
-        {
-            return attackPoint;
-        }
-        private set
-        {
-            attackPoint = attackSetter(value);
-        }
+        get => attackPoint;
+        private set => attackPoint = attackSetter(value);
     }
     public int DefencePoint
     {
-        get
-        {
-            return defencePoint;
-        }
-        private set
-        {
-            defencePoint = defenceSetter(value);
-        }
+        get => defencePoint;
+        private set => defencePoint = defenceSetter(value);
     }
     public int MagicAttackPoint
     {
-        get
-        {
-            return magicAttackPoint;
-        }
-        private set
-        {
-            magicAttackPoint = magicAttackSetter(value);
-        }
+        get => magicAttackPoint;
+        private set => magicAttackPoint = magicAttackSetter(value);
     }
     public int MagicDefencePoint
     {
-        get
-        {
-            return magicDefencePoint;
-        }
-        private set
-        {
-            magicDefencePoint = magicDefenceSetter(value);
-        }
+        get => magicDefencePoint;
+        private set => magicDefencePoint = magicDefenceSetter(value);
     }
     public int Speed
     {
-        get
-        {
-            return speed;
-        }
-        private set
-        {
-            speed = speedSetter(value);
-        }
+        get => speed;
+        private set => speed = speedSetter(value);
     }
 
+    /// <summary>
+    /// ゲームスタート時に値をセットするメソッド
+    /// </summary>
     private void Start()
     {
         isMoving = false;
@@ -131,6 +95,9 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
 
     }
 
+    /// <summary>
+    /// 1フレーム毎に呼ばれ、オブジェクトを動かすメソッド
+    /// </summary>
     private void Update()
     {
         if (isMoving)
@@ -142,11 +109,20 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
         }
     }
 
+    /// <summary>
+    /// プレイヤーが攻撃するメソッド
+    /// </summary>
+    /// <returns>処理結果の文字列</returns>
     public string Attack()
     {
         return $"{charactorName}の攻撃";
     }
 
+    /// <summary>
+    /// プレイヤーがダメージを受けるメソッド
+    /// </summary>
+    /// <param name="damagePoint">受けたダメージ量</param>
+    /// <returns>処理結果の文字列、戦闘終了したか(HPが0になったか)</returns>
     public (List<string>, bool) BeDamaged(int damagePoint)
     {
         var returnList = new List<string>();
@@ -161,12 +137,17 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
         return (returnList, false);
     }
 
+    /// <summary>
+    /// オブジェクトを動かせるようにするメソッド
+    /// </summary>
     public void Move()
     {
-        //firstMass = true;
         isMoving = true;
     }
 
+    /// <summary>
+    /// サイコロを振るためのメソッド
+    /// </summary>
     public void Roll()
     {
         //remainMass = Random.Range(1, 7);
@@ -174,12 +155,19 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
         Debug.Log($"出目は{remainMass}");
     }
 
+    /// <summary>
+    /// レベルを1上げるメソッド
+    /// </summary>
     public void LevelUp()
     {
         //レベルを1上げて、ステータスの計算をし、代入
         //その際、maxhpとhpも上書きする
     }
 
+    /// <summary>
+    /// HPを更新するメソッド
+    /// </summary>
+    /// <param name="value">HPの増減量</param>
     public void ReplaceHP(int value)
     {
         //HPを置き換える

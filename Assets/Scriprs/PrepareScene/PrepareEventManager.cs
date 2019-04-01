@@ -6,6 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// PrepareシーンにてUIの表示を管理するクラス
+/// </summary>
 public class PrepareEventManager : MonoBehaviour
 {
     [SerializeField] GameObject firstCanvas;
@@ -18,18 +21,21 @@ public class PrepareEventManager : MonoBehaviour
     [SerializeField] InputField[] inputFields;
 
 
-    //StartButtonが押されたら呼ばれるメソッド
+    /// <summary>
+    /// Startbuttonが押されたら呼ばれるメソッド
+    /// </summary>
     public void OnStartButtonDown()
     {
         firstCanvas.SetActive(false);
         nextCanvas.SetActive(true);
     }
 
-    //DropDownListの値が変わったら呼ばれるメソッド
+    /// <summary>
+    ///     DropDownListの値が変わったら呼ばれるメソッド
+    /// </summary>
     public void OnDropDownValueChanged()
     {
         var drop = dropdown.GetComponent<Dropdown>();
-        //InputFieldとlabel?を増減させる
 
         switch (drop.value)
         {
@@ -62,7 +68,9 @@ public class PrepareEventManager : MonoBehaviour
         }
     }
 
-    //GOButtonが押されたら呼ばれるメソッド
+    /// <summary>
+    /// GOButtonが押されたら呼ばれるメソッド
+    /// </summary>
     public void OnGOButtonDown()
     {
         var numberOfPlayer = dropdown.value;

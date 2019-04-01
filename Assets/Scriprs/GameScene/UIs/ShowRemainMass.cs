@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 残り○マスというimageの表示を管理するクラス
+/// </summary>
 public class ShowRemainMass : MonoBehaviour
 {
     [SerializeField] Text text;
@@ -13,6 +16,9 @@ public class ShowRemainMass : MonoBehaviour
     int updateRemainMass;
     bool isActive;
 
+    /// <summary>
+    /// 1フレーム毎に呼ばれ、残りマス数を表示するメソッド
+    /// </summary>
     private void Update()
     {
         if (!isActive) return;
@@ -22,12 +28,18 @@ public class ShowRemainMass : MonoBehaviour
         text.text = $"あと {updateRemainMass}マス";
     }
 
+    /// <summary>
+    /// あと○マスのimageをアクティブにするメソッド
+    /// </summary>
     public void Show()
     {
         remainMass.SetActive(true);
         isActive = true;
     }
 
+    /// <summary>
+    /// あと○マスのimageを非アクティブにするメソッド
+    /// </summary>
     public void Hide()
     {
         remainMass.SetActive(false);

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 // Unity JSON
 
+/// <summary>
+/// ストーリーの内容を文字列配列で保持するクラス
+/// </summary>
 public class StoryMemo : MonoBehaviour
 {
     //セーフセーフセーフセーフセーフセーフセーフセーフセー

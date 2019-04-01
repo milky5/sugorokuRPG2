@@ -4,10 +4,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 止まったマスの処理内容をデリゲートとして返すメソッドを実装するクラス
+/// </summary>
 public class StoryContents : MonoBehaviour
 {
     [SerializeField] ReturnDelegate rd;
 
+    /// <summary>
+    /// 止まったマスの処理内容をデリゲートとして返すメソッド
+    /// </summary>
+    /// <param name="story">どの種類のマスに止まったか</param>
+    /// <returns>止まったマスの処理メソッドが代入されたデリゲート</returns>
     public MassContents ReturnContents(StoryList story)
     {
         switch (story)

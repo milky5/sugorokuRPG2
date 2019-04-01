@@ -6,6 +6,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
 
+/// <summary>
+/// プレイヤーが行動を選択するためのUIを管理するクラス
+/// </summary>
 public class GameUIManager : MonoBehaviour
 {
     [SerializeField] GameObject choiceActionCanvas;
@@ -16,12 +19,9 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject backButton;
     [SerializeField] GameObject dice;
 
-    //スタート時に呼ばれる
-    private void Start()
-    {
-    }
-
-    //複数のボタンを表示
+    /// <summary>
+    /// キャンバスのボタンをアクティブにするメソッド
+    /// </summary>
     public void ShowCanvas()
     {
         mapButton.SetActive(true);
@@ -31,7 +31,9 @@ public class GameUIManager : MonoBehaviour
         backButton.SetActive(false);
     }
 
-    //複数のボタンを非表示
+    /// <summary>
+    /// キャンバスのボタンを非アクティブにするメソッド
+    /// </summary>
     public void HideCanvas()
     {
         mapButton.SetActive(false);
@@ -41,7 +43,10 @@ public class GameUIManager : MonoBehaviour
         backButton.SetActive(false);
     }
 
-
+    /// <summary>
+    /// キャンバスのボタンがクリックされたときに呼ばれるメソッド
+    /// </summary>
+    /// <param name="clicked">クリックされたゲームオブジェクト</param>
     public void OnBeClickedTest(GameObject clicked)
     {
         if (clicked.CompareTag("mapButton"))

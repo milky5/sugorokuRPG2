@@ -7,6 +7,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/// <summary>
+/// バトル中のキャンバスを管理するクラス
+/// </summary>
 public class ShowInBattleCanvas : MonoBehaviour
 {
     [SerializeField] ShowTextFiled showTextFiled;
@@ -19,7 +22,10 @@ public class ShowInBattleCanvas : MonoBehaviour
     List<IBattleable> battlers = new List<IBattleable>();
     bool isTextCoroutineRunning;
 
-    //Battle開始時に呼ばれるメソッド
+    /// <summary>
+    /// バトル開始時に呼ばれ、行動を選択させるメソッド
+    /// </summary>
+    /// <param name="acPlayer">アクティブプレイヤ</param>
     public void OnBattleStart(Player acPlayer)
     {
         this.acPlayer = acPlayer;
@@ -28,12 +34,16 @@ public class ShowInBattleCanvas : MonoBehaviour
 
         text.text = "敵が現れた。\nどうしますか？";
 
-        SetStatus();
+        //SetStatus();
         Sort();
 
         buttons.SetActive(true);
     }
 
+    /// <summary>
+    /// ボタンが押されたときに呼ばれるメソッド
+    /// </summary>
+    /// <param name="clicked">クリックされたゲームオブジェクト</param>
     public void OnAttackButtonsClicked(GameObject clicked)
     {
         //if (clicked.CompareTag("nomal"))
@@ -50,6 +60,10 @@ public class ShowInBattleCanvas : MonoBehaviour
         buttons.SetActive(false);
     }
 
+    /// <summary>
+    /// 選択された行動を基に、敵とバトルをするコルーチン
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator Fighting()
     {
         {
@@ -81,13 +95,19 @@ public class ShowInBattleCanvas : MonoBehaviour
         buttons.SetActive(true);
     }
 
-
+    /// <summary>
+    /// バトルが終了(片方が倒れた時に呼ばれるメソッド)
+    /// </summary>
     void Hide()
     {
         battleCanvas.SetActive(false);
         showInStoryCanvas.Hide(true);
     }
 
+    /// <summary>
+    /// 文字表示コルーチンのコールバック
+    /// </summary>
+    /// <param name="finish"></param>
     void JugdeIsCoroutineFinish(bool finish)
     {
         if (finish)
@@ -96,10 +116,10 @@ public class ShowInBattleCanvas : MonoBehaviour
         }
     }
 
-
-
-
-    //本番では、ステータスを取ってくる
+    /// <summary>
+    /// 敵のステータスを取得するメソッド
+    /// </summary>
+    //本番ではEnum使う
     void SetStatus()
     {
         enemy = new Enemy
@@ -114,8 +134,9 @@ public class ShowInBattleCanvas : MonoBehaviour
         };
     }
 
-
-    //取得したプレイヤーをリストに追加し、ソート
+    /// <summary>
+    /// 取得した戦闘者をリストに追加し、ソートするメソッド
+    /// </summary>
     void Sort()
     {
         battlers.Clear();
@@ -126,8 +147,12 @@ public class ShowInBattleCanvas : MonoBehaviour
         battlers.Sort((a, b) => b.Speed - a.Speed);
     }
 
-
-    //攻撃・防御をさせ、結果を返す
+    /// <summary>
+    /// 攻撃と防御のステータス計算後に処理をし、処理結果の文字列を返すメソッド
+    /// </summary>
+    /// <param name="attacker">攻撃側</param>
+    /// <param name="defencer">防御側</param>
+    /// <returns>処理結果の文字列</returns>
     (List<string>, bool) Direct(IBattleable attacker, IBattleable defencer)
     {
         var attackStr = attacker.Attack();
@@ -158,7 +183,12 @@ public class ShowInBattleCanvas : MonoBehaviour
         return (returnList, isEnd);
     }
 
-    //攻撃と防御でいくつダメージが入るか計算
+    /// <summary>
+    /// 攻撃と防御のステータスを取得し、ダメージ量を計算するメソッド
+    /// </summary>
+    /// <param name="attacker">攻撃側</param>
+    /// <param name="defencer">防御側</param>
+    /// <returns>ダメージ量</returns>
     public int DamagePointCalc(IBattleable attacker, IBattleable defencer)
     {
         int iryoku = 50;
@@ -169,7 +199,10 @@ public class ShowInBattleCanvas : MonoBehaviour
         return (int)damagePoint;
     }
 
-    //戦闘時の乱数を作成
+    /// <summary>
+    /// 戦闘時の乱数を生成するメソッド
+    /// </summary>
+    /// <returns>戦闘時の乱数</returns>
     public float DamageRatioGenerator()
     {
         int ransu = UnityEngine.Random.Range(0, 100);
@@ -199,7 +232,5 @@ public class ShowInBattleCanvas : MonoBehaviour
 
         return ratio;
     }
-
-
 
 }
