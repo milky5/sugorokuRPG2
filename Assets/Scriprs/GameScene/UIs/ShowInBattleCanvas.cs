@@ -34,7 +34,7 @@ public class ShowInBattleCanvas : MonoBehaviour
 
         text.text = "敵が現れた。\nどうしますか？";
 
-        //SetStatus();
+        SetStatus();
         Sort();
 
         buttons.SetActive(true);
