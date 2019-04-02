@@ -11,5 +11,6 @@ public enum StoryList
     healHP,
     shopping,
     helpPeople,
-    callbattle
+    callbattle,
+    first
 }

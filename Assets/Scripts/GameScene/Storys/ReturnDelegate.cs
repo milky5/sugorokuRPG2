@@ -5,13 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 止まったマスで何の処理をするのかを保持するデリゲート
-/// </summary>
-/// <param name="player">そのマスに止まったプレイヤー</param>
-/// <returns>処理結果の文字列</returns>
-public delegate string[] MassContents(Player player);
-
-/// <summary>
 /// 止まったマスでの処理内容を記載したメソッドが定義されているクラス
 /// </summary>
 class ReturnDelegate : MonoBehaviour
@@ -81,6 +74,17 @@ class ReturnDelegate : MonoBehaviour
             $"お礼に{recivedMoney}円もらった"
         };
         return helpPeopleStr;
+    }
+
+    public string[] First(Player player)
+    {
+        StoryMemo storyMemo = new StoryMemo();
+        string[] returnArray = new string[storyMemo.first.Length + storyMemo.nexttown.Length + storyMemo.inbuillding.Length];
+        storyMemo.first.CopyTo(returnArray, 0);
+        storyMemo.nexttown.CopyTo(returnArray, storyMemo.first.Length);
+        storyMemo.inbuillding.CopyTo(returnArray, storyMemo.first.Length + storyMemo.nexttown.Length);
+
+        return returnArray;
     }
 
     /// <summary>

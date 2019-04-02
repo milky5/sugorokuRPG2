@@ -15,7 +15,7 @@ public class ShowInStoryCanvas : MonoBehaviour
     [SerializeField] Image image;
     [SerializeField] Sprite battle;
     [SerializeField] Sprite help;
-    [SerializeField] StoryMemo storyMemo;
+    //[SerializeField] StoryMemo storyMemo;
     [SerializeField] StoryContents storyContents;
     [SerializeField] Text text;
 

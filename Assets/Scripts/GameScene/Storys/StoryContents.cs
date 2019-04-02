@@ -30,6 +30,8 @@ public class StoryContents : MonoBehaviour
                 return new MassContents(rd.HelpPeople);
             case StoryList.callbattle:
                 return new MassContents(rd.CallBattle);
+            case StoryList.first:
+                return new MassContents(rd.First);
             default:
                 return new MassContents(rd.NullStory);
         }

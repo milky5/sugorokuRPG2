@@ -60,8 +60,11 @@ public　partial class Program : MonoBehaviour
         players[0].isActive = true;
         isFirstTurn = true;
         isOneTurnStart = true;
+    }
 
-        
+    private void Start()
+    {
+        uisFacade.StoryCanvasShow(StoryList.first,activePlayer);
     }
 
     /// <summary>
@@ -72,7 +75,6 @@ public　partial class Program : MonoBehaviour
         if (isGameStart)
         {
             isGameStart = false;
-            //あなた達は町へ出かけることになりました
         }
         if (keeper.remainMass == 0 && isRemainJudging)
         {

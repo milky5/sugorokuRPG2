@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// <summary>
 /// ストーリーの内容を文字列配列で保持するクラス
 /// </summary>
-public class StoryMemo : MonoBehaviour
+public class StoryMemo 
 {
     //セーフセーフセーフセーフセーフセーフセーフセーフセー
     //アウトアウトアウトアウトアウトアウトアウトアウトアウトアウトア
