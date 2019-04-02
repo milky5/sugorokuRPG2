@@ -5,15 +5,14 @@ using UnityEngine;
 /// <summary>
 /// カメラの位置を調整するためのクラス
 /// </summary>
-public class CameraController : MonoBehaviour
+public class AutoCameraMover : MonoBehaviour
 {
     Vector3 distance;
-    CharactorStatusKeeper keeper;
+    [SerializeField] CharactorStatusKeeper keeper;
 
     // Start is called before the first frame update
     void Start()
     {
-        keeper = GameObject.Find("CharactorStatusKeeper").GetComponent<CharactorStatusKeeper>();
         distance = transform.position - keeper.playerPos;
     }
 

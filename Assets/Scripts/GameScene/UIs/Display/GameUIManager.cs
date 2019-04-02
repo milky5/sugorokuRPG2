@@ -22,6 +22,9 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] ShowStatusText showStatusText;
     [SerializeField] GameObject statusText;
 
+    [SerializeField] CameraMoverSwitcher cameraMoverSwitcher;
+    [SerializeField] GameObject mapButtons;
+
     /// <summary>
     /// キャンバスのボタンをアクティブにするメソッド
     /// </summary>
@@ -60,6 +63,9 @@ public class GameUIManager : MonoBehaviour
             diceButton.SetActive(false);
             statusButton.SetActive(false);
             backButton.SetActive(true);
+
+            cameraMoverSwitcher.UseManualMover();
+            mapButtons.SetActive(true);
         }
         else if (clicked.CompareTag("itemButton"))
         {
@@ -102,6 +108,8 @@ public class GameUIManager : MonoBehaviour
             backButton.SetActive(false);
 
             statusText.SetActive(false);
+            cameraMoverSwitcher.UseAutoMover();
+            mapButtons.SetActive(false);
         }
     }
 }
