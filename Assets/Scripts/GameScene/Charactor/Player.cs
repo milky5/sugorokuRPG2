@@ -34,6 +34,7 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
     int magicDefencePoint;
     int speed;
 
+    public int Syuzokuchi { get; set; }
     public int Level { get; set; }
     public int MaxHp { get; set; }
     public int HP
@@ -84,6 +85,7 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
         magicDefenceSetter = new PropatySetter(setter.SetSetter);
         speedSetter = new PropatySetter(setter.SetSetter);
 
+        Syuzokuchi = 60;
         Level = 5;
         MaxHp = 21;
         hp = 21;
@@ -160,8 +162,17 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
     /// </summary>
     public void LevelUp()
     {
-        //レベルを1上げて、ステータスの計算をし、代入
-        //その際、maxhpとhpも上書きする
+        Level++;
+
+        (var newHp, var newAbcds) = StatusCalc.StatusCalclator(Level,Syuzokuchi);
+        MaxHp = newHp;
+        AttackPoint = newAbcds;
+        DefencePoint = newAbcds;
+        MagicAttackPoint = newAbcds;
+        MagicDefencePoint = newAbcds;
+        Speed = newAbcds;
+
+        HP = MaxHp;
     }
 
     /// <summary>

@@ -166,9 +166,11 @@ public class ShowInBattleCanvas : MonoBehaviour
         {
             Player winner = attacker as Player;
             returnList.Add($"{winner.charactorName}の勝利！");
-            winner.Level++;
+            winner.LevelUp();
             returnList.Add($"{winner.charactorName}はレベルが1上がった！");
-            returnList.Add($"{winner.charactorName}は報奨金として{UnityEngine.Random.Range(100, 1000)}円もらった！");
+            var getMoney = UnityEngine.Random.Range(100, 1000);
+            winner.money += getMoney;
+            returnList.Add($"{winner.charactorName}は報奨金として{getMoney}円もらった！");
         }
         if (isEnd && attacker is Enemy)
         {
@@ -231,5 +233,6 @@ public class ShowInBattleCanvas : MonoBehaviour
 
         return ratio;
     }
+
 
 }

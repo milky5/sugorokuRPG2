@@ -22,7 +22,7 @@ public class ReturnEnemy : MonoBehaviour
                 //種族値30,レベル5
                 enemy = new Enemy
                 {
-                    syuzokuchi = 30,
+                    Syuzokuchi = 30,
                     Level = 5,
                     HP = 18,
                     AttackPoint = 8,
@@ -37,7 +37,7 @@ public class ReturnEnemy : MonoBehaviour
                 //種族値30,レベル10
                 enemy = new Enemy
                 {
-                    syuzokuchi = 30,
+                    Syuzokuchi = 30,
                     Level = 10,
                     HP = 26,
                     AttackPoint = 11,
@@ -52,7 +52,7 @@ public class ReturnEnemy : MonoBehaviour
                 //種族値30,レベル20
                 enemy = new Enemy
                 {
-                    syuzokuchi = 30,
+                    Syuzokuchi = 30,
                     Level = 20,
                     HP = 42,
                     AttackPoint = 17,
@@ -67,7 +67,7 @@ public class ReturnEnemy : MonoBehaviour
                 //種族値30,レベル25
                 enemy = new Enemy
                 {
-                    syuzokuchi = 30,
+                    Syuzokuchi = 30,
                     Level = 25,
                     HP = 50,
                     AttackPoint = 20,
@@ -82,7 +82,7 @@ public class ReturnEnemy : MonoBehaviour
                 //種族値30,レベル30
                 enemy = new Enemy
                 {
-                    syuzokuchi = 30,
+                    Syuzokuchi = 30,
                     Level = 30,
                     HP = 58,
                     AttackPoint = 23,
@@ -97,7 +97,7 @@ public class ReturnEnemy : MonoBehaviour
                 //種族値30,レベル35
                 enemy = new Enemy
                 {
-                    syuzokuchi = 30,
+                    Syuzokuchi = 30,
                     Level = 35,
                     HP = 66,
                     AttackPoint = 26,
@@ -111,7 +111,7 @@ public class ReturnEnemy : MonoBehaviour
             default:
                 enemy = new Enemy
                 {
-                    syuzokuchi = 30,
+                    Syuzokuchi = 30,
                     Level = 5,
                     HP = 20,
                     AttackPoint = 8,

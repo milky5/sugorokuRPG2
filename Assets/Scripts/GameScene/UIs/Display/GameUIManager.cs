@@ -19,6 +19,9 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject backButton;
     [SerializeField] GameObject dice;
 
+    [SerializeField] ShowStatusText showStatusText;
+    [SerializeField] GameObject statusText;
+
     /// <summary>
     /// キャンバスのボタンをアクティブにするメソッド
     /// </summary>
@@ -80,6 +83,9 @@ public class GameUIManager : MonoBehaviour
         else if (clicked.CompareTag("statusButton"))
         {
             Debug.Log("ステータスボタンが押されました");
+            showStatusText.WriteText();
+            statusText.SetActive(true);
+
             mapButton.SetActive(false);
             itemButton.SetActive(false);
             diceButton.SetActive(false);
@@ -94,6 +100,8 @@ public class GameUIManager : MonoBehaviour
             diceButton.SetActive(true);
             statusButton.SetActive(true);
             backButton.SetActive(false);
+
+            statusText.SetActive(false);
         }
     }
 }

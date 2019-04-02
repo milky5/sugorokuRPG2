@@ -9,6 +9,7 @@ public class Enemy : IBattleable
 {
     int hp;
 
+    public int Syuzokuchi { get; set; }
     public int Level { get; set; }
     public int MaxHp { get; set; }
     public int HP
@@ -21,7 +22,6 @@ public class Enemy : IBattleable
     public int MagicAttackPoint { get; set; }
     public int MagicDefencePoint { get; set; }
     public int Speed { get; set; }
-    public int syuzokuchi;
 
     /// <summary>
     /// 敵が攻撃するメソッド

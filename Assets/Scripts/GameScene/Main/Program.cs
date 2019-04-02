@@ -132,8 +132,8 @@ public　partial class Program : MonoBehaviour
             isDiceFinishedFalling = false;
 
             //サイコロを振る
-            int diceNumber = 4;
-            //int diceNumber = UnityEngine.Random.Range(1, 7);
+            //int diceNumber = 4;
+            int diceNumber = UnityEngine.Random.Range(1, 7);
             Debug.Log($"出た目は {diceNumber}");
             beRolledDice.OnRollingExit(diceNumber);
 

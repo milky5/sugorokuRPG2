@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IBattleable
 {
+    int Syuzokuchi { get; set; }
     int Level { get; set; }
     int MaxHp { get; }
     int HP { get; set; }
