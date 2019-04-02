@@ -249,10 +249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keeper: {fileID: 1373717858}
-  gameUIManager: {fileID: 981428174}
+  uisFacade: {fileID: 981428175}
   showInStoryCanvas: {fileID: 981428176}
-  showRemainMass: {fileID: 981428180}
-  whosTurn: {fileID: 981428179}
   playerMover: {fileID: 85073277}
   beRolledDice: {fileID: 1731601363}
   playerPrefabsParent: {fileID: 1263649781}
@@ -3038,12 +3036,12 @@ GameObject:
   - component: {fileID: 981428176}
   - component: {fileID: 981428174}
   - component: {fileID: 981428178}
-  - component: {fileID: 981428175}
   - component: {fileID: 981428179}
   - component: {fileID: 981428180}
   - component: {fileID: 981428181}
   - component: {fileID: 981428182}
   - component: {fileID: 981428183}
+  - component: {fileID: 981428175}
   m_Layer: 0
   m_Name: UIsManager
   m_TagString: Untagged
@@ -3079,10 +3077,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 981428173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c95ea2a497e934e8530f27a90f882a, type: 3}
+  m_Script: {fileID: 11500000, guid: 04a76988fcf6eb04db6d7cb5b17bc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 1056714206}
+  gameUIManager: {fileID: 981428174}
+  showInBattleCanvas: {fileID: 981428181}
+  showInStoryCanvas: {fileID: 981428176}
+  showRemainMass: {fileID: 981428180}
+  whosTurn: {fileID: 981428179}
 --- !u!114 &981428176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3100,8 +3102,8 @@ MonoBehaviour:
   battle: {fileID: 21300000, guid: 468dbc827b28c60459b95e6b9280aff3, type: 3}
   help: {fileID: 21300000, guid: fae32f11618501c46a8c569396cf1755, type: 3}
   storyMemo: {fileID: 981428178}
-  showTextFiled: {fileID: 981428175}
   storyContents: {fileID: 981428183}
+  text: {fileID: 1056714206}
   isTextEnd: 0
 --- !u!4 &981428177
 Transform:
@@ -3257,7 +3259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddcd26dd37e42a47a08aae8b7bda7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showTextFiled: {fileID: 981428175}
   buttons: {fileID: 985031210}
   battleCanvas: {fileID: 1062811261}
   showInStoryCanvas: {fileID: 981428176}
@@ -4033,7 +4034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1291592166
 RectTransform:
   m_ObjectHideFlags: 0

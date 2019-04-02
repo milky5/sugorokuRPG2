@@ -12,7 +12,6 @@ using UnityEngine.UI;
 /// </summary>
 public class ShowInBattleCanvas : MonoBehaviour
 {
-    [SerializeField] ShowTextFiled showTextFiled;
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject battleCanvas;
     [SerializeField] ShowInStoryCanvas showInStoryCanvas;
@@ -64,7 +63,7 @@ public class ShowInBattleCanvas : MonoBehaviour
     /// 選択された行動を基に、敵とバトルをするコルーチン
     /// </summary>
     /// <returns></returns>
-    public IEnumerator Fighting()
+    IEnumerator Fighting()
     {
         {
             //早いほうに攻撃させ、遅いほうに防御させる
@@ -73,7 +72,7 @@ public class ShowInBattleCanvas : MonoBehaviour
             //文字を画面に出力
             isTextCoroutineRunning = true;
             var battleStrArray = battleStr.ToArray();
-            StartCoroutine(showTextFiled.ShowStorys(battleStrArray, JugdeIsCoroutineFinish, text));
+            StartCoroutine(ShowTextFiled.ShowStorys(battleStrArray, text, JugdeIsCoroutineFinish));
             //文字表示終了待ち
             yield return new WaitUntil(() => !isTextCoroutineRunning);
             //もし戦闘が終わっているのならループ終了
@@ -85,7 +84,7 @@ public class ShowInBattleCanvas : MonoBehaviour
             //文字を画面に出力
             isTextCoroutineRunning = true;
             battleStrArray = battleStr.ToArray();
-            StartCoroutine(showTextFiled.ShowStorys(battleStrArray, JugdeIsCoroutineFinish, text));
+            StartCoroutine(ShowTextFiled.ShowStorys(battleStrArray, text, JugdeIsCoroutineFinish));
             //文字表示終了待ち
             yield return new WaitUntil(() => !isTextCoroutineRunning);
             //もし戦闘が終わっているのならループ終了
@@ -189,7 +188,7 @@ public class ShowInBattleCanvas : MonoBehaviour
     /// <param name="attacker">攻撃側</param>
     /// <param name="defencer">防御側</param>
     /// <returns>ダメージ量</returns>
-    public int DamagePointCalc(IBattleable attacker, IBattleable defencer)
+    int DamagePointCalc(IBattleable attacker, IBattleable defencer)
     {
         int iryoku = 50;
         float ransu = DamageRatioGenerator();
@@ -203,7 +202,7 @@ public class ShowInBattleCanvas : MonoBehaviour
     /// 戦闘時の乱数を生成するメソッド
     /// </summary>
     /// <returns>戦闘時の乱数</returns>
-    public float DamageRatioGenerator()
+    float DamageRatioGenerator()
     {
         int ransu = UnityEngine.Random.Range(0, 100);
 

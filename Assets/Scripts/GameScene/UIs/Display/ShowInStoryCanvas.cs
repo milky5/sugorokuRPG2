@@ -16,8 +16,8 @@ public class ShowInStoryCanvas : MonoBehaviour
     [SerializeField] Sprite battle;
     [SerializeField] Sprite help;
     [SerializeField] StoryMemo storyMemo;
-    [SerializeField] ShowTextFiled showTextFiled;
     [SerializeField] StoryContents storyContents;
+    [SerializeField] Text text;
 
     public bool isTextEnd;
 
@@ -41,7 +41,7 @@ public class ShowInStoryCanvas : MonoBehaviour
             return;
         }
         //ストーリーの内容をテキスト表示させる
-        StartCoroutine(showTextFiled.ShowStorys(storyStr, Hide));
+        StartCoroutine(ShowTextFiled.ShowStorys(storyStr, text, Hide));
     }
 
     /// <summary>

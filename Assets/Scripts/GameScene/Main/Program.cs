@@ -14,17 +14,15 @@ using System.Linq;
 public　partial class Program : MonoBehaviour
 {
     [SerializeField] CharactorStatusKeeper keeper;
-    [SerializeField] GameUIManager gameUIManager;
+    [SerializeField] UIsFacade uisFacade;
+    //[SerializeField] GameUIManager gameUIManager;
     [SerializeField] ShowInStoryCanvas showInStoryCanvas;
-    //[SerializeField] Dice diceClass;
-    [SerializeField] ShowRemainMass showRemainMass;
-    [SerializeField] WhosTurn whosTurn;
+    //[SerializeField] ShowRemainMass showRemainMass;
+    //[SerializeField] WhosTurn whosTurn;
     [SerializeField] PlayerMover playerMover;
     [SerializeField] BeRolledDice beRolledDice;
     [SerializeField] GameObject playerPrefabsParent;
-    //[SerializeField] GameObject playerPrefab;
-    [SerializeField] GameObject[] playerPrefabs;
-    List<Player> players = new List<Player>();
+    [SerializeField] GameObject[] playerPrefabs;    List<Player> players = new List<Player>();
 
     Player activePlayer;
     GameObject activePlayerObj;
@@ -103,7 +101,7 @@ public　partial class Program : MonoBehaviour
             GetActivePlayer();
             GetActivePlayerObj();
             RenewalData();
-            StartCoroutine(whosTurn.ShowWhosTurn(activePlayer));
+            uisFacade.WhosTurnShow(activePlayer);
 
             beRolledDice.OnActivePlayerChanged(activePlayerObj);
 
@@ -115,7 +113,7 @@ public　partial class Program : MonoBehaviour
         {
             isPlayerChoicing = false;
 
-            gameUIManager.ShowCanvas();
+            uisFacade.ChoiceCanvasShow();
         }
 
         //サイコロが落ち始めた時
@@ -123,7 +121,7 @@ public　partial class Program : MonoBehaviour
         {
             isDiceBeganToFall = false;
 
-            gameUIManager.HideCanvas();
+            uisFacade.ChoiceCanvasHide();
         }
 
         //サイコロの落ち終わりをフラグ管理、
@@ -141,7 +139,7 @@ public　partial class Program : MonoBehaviour
 
             beRolledDice.OnRollingExit(diceNumber);
             playerMover.Move(activePlayer,diceNumber);
-            showRemainMass.Show();
+            uisFacade.RemainMassShow();
 
             isRemainJudging = true;
         }
@@ -152,8 +150,8 @@ public　partial class Program : MonoBehaviour
             isPlayerFinishedMoving = false;
 
             beRolledDice.OnMoveExit();
-            showRemainMass.Hide();
-            showInStoryCanvas.Show(story,activePlayer);
+            uisFacade.RemainMassHide();
+            uisFacade.StoryCanvasShow(story, activePlayer);
             isTextEndJudging = true;
         }
 
