@@ -11,6 +11,13 @@ public class BeRolledDice : MonoBehaviour
 {
     [SerializeField] GameObject fakeDice;
     [SerializeField] GameObject realDice;
+    [SerializeField] GameObject fakeDice1;
+    [SerializeField] GameObject fakeDice2;
+    [SerializeField] GameObject fakeDice3;
+    [SerializeField] GameObject fakeDice4;
+    [SerializeField] GameObject fakeDice5;
+    [SerializeField] GameObject fakeDice6;
+    GameObject displayedDice;
     Vector3 dicePosition;
     float realDiceDefaltPosY = 4.0f;
 
@@ -21,7 +28,42 @@ public class BeRolledDice : MonoBehaviour
     public void OnRollingExit(int diceNumber)
     {
         realDice.SetActive(false);
-        fakeDice.SetActive(true);
+
+        switch (diceNumber)
+        {
+            case 1:
+                fakeDice1.SetActive(true);
+                fakeDice1.transform.Rotate(new Vector3(0, Random.Range(0, 361), 0),Space.World);
+                displayedDice = fakeDice1;
+                break;
+            case 2:
+                fakeDice2.SetActive(true);
+                fakeDice2.transform.Rotate(new Vector3(0, Random.Range(0, 361), 0), Space.World);
+                displayedDice = fakeDice2;
+                break;
+            case 3:
+                fakeDice3.SetActive(true);
+                fakeDice3.transform.Rotate(new Vector3(0, Random.Range(0, 361), 0), Space.World);
+                displayedDice = fakeDice3;
+                break;
+            case 4:
+                fakeDice4.SetActive(true);
+                fakeDice4.transform.Rotate(new Vector3(0, Random.Range(0, 361), 0), Space.World);
+                displayedDice = fakeDice4;
+                break;
+            case 5:
+                fakeDice5.SetActive(true);
+                fakeDice5.transform.Rotate(new Vector3(0, Random.Range(0, 361), 0), Space.World);
+                displayedDice = fakeDice5;
+                break;
+            case 6:
+                fakeDice6.SetActive(true);
+                fakeDice6.transform.Rotate(new Vector3(0, Random.Range(0, 361), 0), Space.World);
+                displayedDice = fakeDice6;
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -29,7 +71,7 @@ public class BeRolledDice : MonoBehaviour
     /// </summary>
     public void OnMoveExit()
     {
-        fakeDice.SetActive(false);
+        displayedDice.SetActive(false);
     }
 
     /// <summary>
