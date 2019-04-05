@@ -9,7 +9,6 @@ using UnityEngine;
 /// </summary>
 public class BeRolledDice : MonoBehaviour
 {
-    [SerializeField] GameObject fakeDice;
     [SerializeField] GameObject realDice;
     [SerializeField] GameObject fakeDice1;
     [SerializeField] GameObject fakeDice2;

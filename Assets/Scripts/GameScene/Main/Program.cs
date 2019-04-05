@@ -58,13 +58,14 @@ public　partial class Program : MonoBehaviour
         }
 
         players[0].isActive = true;
-        isFirstTurn = true;
-        isOneTurnStart = true;
+        //isFirstTurn = true;
+        //isOneTurnStart = true;
     }
 
     private void Start()
     {
         uisFacade.StoryCanvasShow(StoryList.first,activePlayer);
+        isTextEndJudging = true;
     }
 
     /// <summary>
