@@ -3680,8 +3680,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2136777114}
   image: {fileID: 1331454790}
-  battle: {fileID: 21300000, guid: 468dbc827b28c60459b95e6b9280aff3, type: 3}
-  help: {fileID: 21300000, guid: fae32f11618501c46a8c569396cf1755, type: 3}
+  first: {fileID: 21300000, guid: f418223dd1e9a83479e7db4bdc8397b0, type: 3}
+  help: {fileID: 21300000, guid: c611cd01711730e44b3286758de10841, type: 3}
   storyContents: {fileID: 981428183}
   text: {fileID: 1056714206}
   isTextEnd: 0
@@ -5919,7 +5919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab0c7ccd69165a49ac06043ba9ca313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fakeDice: {fileID: 0}
   realDice: {fileID: 983921893}
   fakeDice1: {fileID: 1115784577}
   fakeDice2: {fileID: 1815365506}
@@ -6695,7 +6694,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 468dbc827b28c60459b95e6b9280aff3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ee2a4b98b1a6784e8d861a26965b024, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

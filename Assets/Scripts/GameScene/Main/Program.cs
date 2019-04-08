@@ -58,7 +58,6 @@ public　partial class Program : MonoBehaviour
         }
 
         players[0].isActive = true;
-        //isFirstTurn = true;
         //isOneTurnStart = true;
     }
 
@@ -66,6 +65,8 @@ public　partial class Program : MonoBehaviour
     {
         uisFacade.StoryCanvasShow(StoryList.first,activePlayer);
         isTextEndJudging = true;
+        keeper.enabled = false;
+        isFirstTurn = true;
     }
 
     /// <summary>
@@ -103,6 +104,7 @@ public　partial class Program : MonoBehaviour
 
             GetActivePlayer();
             GetActivePlayerObj();
+            keeper.enabled = true;
             RenewalData();
             uisFacade.WhosTurnShow(activePlayer);
 

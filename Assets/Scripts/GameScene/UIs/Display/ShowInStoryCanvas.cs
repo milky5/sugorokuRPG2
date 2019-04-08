@@ -13,13 +13,14 @@ public class ShowInStoryCanvas : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
     [SerializeField] Image image;
-    [SerializeField] Sprite battle;
+    [SerializeField] Sprite first;
     [SerializeField] Sprite help;
     //[SerializeField] StoryMemo storyMemo;
     [SerializeField] StoryContents storyContents;
     [SerializeField] Text text;
 
     public bool isTextEnd;
+    bool firstShow = true;
 
     /// <summary>
     /// StoryCanbasにマス目の内容を表示させるメソッド
@@ -32,7 +33,16 @@ public class ShowInStoryCanvas : MonoBehaviour
         canvas.SetActive(true);
         //テキスト表示をスタートさせるフラグを立てる
         isTextEnd = false;
-        //image.sprite = battle;
+
+        if (firstShow)
+        {
+            image.sprite = first;
+            firstShow = false;
+        }
+        else
+        {
+            image.sprite = help;
+        }
         //ストーリーの内容を取得する
         var storyDelegate = storyContents.ReturnContents(story);
         var storyStr = storyDelegate(activePlayer);
