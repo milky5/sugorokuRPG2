@@ -14,7 +14,8 @@ public static class DebugStaticClass
     /// </summary>
     public static void TakeDate()
     {
-        names = new string[] { "一郎", "次郎", "三郎", "四郎" };
+        //names = new string[] { "一郎", "次郎", "三郎", "四郎" };
+        names = new string[] { "いちか", "にの", "みく" };
     }
 
     /// <summary>
